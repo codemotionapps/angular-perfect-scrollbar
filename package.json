@@ -33,7 +33,6 @@
     "jquery.js"
   ],
   "devDependencies": {
-    "angular": "^1.5.8",
     "browserify": "^11.2.0",
     "del": "^2.0.2",
     "event-stream": "^3.3.1",
