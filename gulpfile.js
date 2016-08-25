@@ -34,8 +34,7 @@ gulp.task('clean:js:min', function () {
 });
 
 var jsEntries = [
-  './src/js/adaptor/global.js',
-  './src/js/adaptor/jquery.js'
+  './src/js/adaptor/global.js'
 ];
 
 var autoPrefixerConfig = {
