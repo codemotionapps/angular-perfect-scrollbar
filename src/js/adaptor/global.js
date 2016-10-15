@@ -39,7 +39,7 @@ angular.module("perfectScrollbar", [])
         }
       }
     };
-  }]).directive('perfectScroll', ['$interval', function ($interval) {
+  }]).directive('perfectScrollNotIsolated', ['$interval', function ($interval) {
     return {
       link: function (scope, elem, attrs) {
         window.Ps.initialize(elem[0], {
