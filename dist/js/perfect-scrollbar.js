@@ -19,7 +19,7 @@ if (typeof define === 'function' && define.amd) {
 }
 
 angular.module("perfectScrollbar", [])
-  .directive('perfectScroll', ['$interval', '$rootScope', function ($interval, $rootScope) {
+  .directive('perfectScroll', ['$interval', function ($interval) {
     return {
       scope: {
         suppressScrollY: "@",
@@ -39,7 +39,22 @@ angular.module("perfectScrollbar", [])
             window.Ps.update(elem[0]);
           }, 5000);
         }
-        $rootScope.scrollBody = elem;
+      }
+    };
+  }]).directive('perfectScroll', ['$interval', function ($interval) {
+    return {
+      link: function (scope, elem, attrs) {
+        window.Ps.initialize(elem[0], {
+          suppressScrollY: angular.isDefined(attrs.suppressScrollY) ? attrs.suppressScrollY : false,
+          suppressScrollX: angular.isDefined(attrs.suppressScrollX) ? attrs.suppressScrollX : false,
+          useBothWheelAxes: angular.isDefined(attrs.useBothWheelAxes) ? attrs.useBothWheelAxes : false
+        });
+        if(attrs.psProblematic === "true") {
+          window.Ps.update(elem[0]);
+          $interval(function () {
+            window.Ps.update(elem[0]);
+          }, 5000);
+        }
       }
     };
   }]);
